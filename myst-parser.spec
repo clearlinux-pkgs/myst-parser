@@ -4,7 +4,7 @@
 #
 Name     : myst-parser
 Version  : 0.15.2
-Release  : 3
+Release  : 4
 URL      : https://files.pythonhosted.org/packages/91/33/e2ff1d4675d9f6fae51e03b0ad99ab9276773424006191c1057609b543db/myst-parser-0.15.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/91/33/e2ff1d4675d9f6fae51e03b0ad99ab9276773424006191c1057609b543db/myst-parser-0.15.2.tar.gz
 Summary  : An extended commonmark compliant parser, with bridges to docutils & sphinx.
@@ -15,10 +15,7 @@ Requires: myst-parser-license = %{version}-%{release}
 Requires: myst-parser-python = %{version}-%{release}
 Requires: myst-parser-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-BuildRequires : pypi(beautifulsoup4)
-BuildRequires : pypi(coverage)
 BuildRequires : pypi(docutils)
-BuildRequires : pypi(ipython)
 BuildRequires : pypi(jinja2)
 BuildRequires : pypi(pyyaml)
 BuildRequires : pypi(setuptools)
@@ -81,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1637344958
+export SOURCE_DATE_EPOCH=1637367504
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -91,14 +88,16 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
-python3 setup.py build
+pypi-dep-fix.py . docutils
+python3 -m build --wheel --skip-dependency-check --no-isolation
 
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/myst-parser
 cp %{_builddir}/myst-parser-0.15.2/LICENSE %{buildroot}/usr/share/package-licenses/myst-parser/ab5a711cce75e49bdbd08bbcb728262e30580e5d
-python3 -tt setup.py build  install --root=%{buildroot}
+python3 -m install --destdir=%{buildroot} dist/*.whl
+pypi-dep-fix.py %{buildroot} docutils
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----

@@ -1,9 +1,5 @@
 0.15.2
-pypi(beautifulsoup4)
-pypi(coverage)
 pypi(docutils)
-pypi(ipython)
 pypi(jinja2)
-pypi(markdown_it_py)
 pypi(pyyaml)
 pypi(sphinx)
