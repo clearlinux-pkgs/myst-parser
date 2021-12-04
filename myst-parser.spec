@@ -4,7 +4,7 @@
 #
 Name     : myst-parser
 Version  : 0.15.2
-Release  : 5
+Release  : 6
 URL      : https://files.pythonhosted.org/packages/91/33/e2ff1d4675d9f6fae51e03b0ad99ab9276773424006191c1057609b543db/myst-parser-0.15.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/91/33/e2ff1d4675d9f6fae51e03b0ad99ab9276773424006191c1057609b543db/myst-parser-0.15.2.tar.gz
 Summary  : An extended commonmark compliant parser, with bridges to docutils & sphinx.
@@ -79,7 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1638618232
+export SOURCE_DATE_EPOCH=1638618434
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -91,6 +91,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
 pypi-dep-fix.py . docutils
 pypi-dep-fix.py . markdown-it-py
+pypi-dep-fix.py . mdit-py-plugins
 python3 -m build --wheel --skip-dependency-check --no-isolation
 
 %install
@@ -101,6 +102,7 @@ cp %{_builddir}/myst-parser-0.15.2/LICENSE %{buildroot}/usr/share/package-licens
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 pypi-dep-fix.py %{buildroot} docutils
 pypi-dep-fix.py %{buildroot} markdown-it-py
+pypi-dep-fix.py %{buildroot} mdit-py-plugins
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
