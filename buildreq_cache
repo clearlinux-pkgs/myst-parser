@@ -1,5 +1,6 @@
 0.15.2
 pypi(docutils)
 pypi(jinja2)
+pypi(mdit_py_plugins)
 pypi(pyyaml)
 pypi(sphinx)
