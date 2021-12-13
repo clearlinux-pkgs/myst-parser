@@ -1,5 +1,5 @@
 PKG_NAME := myst-parser
-URL = https://files.pythonhosted.org/packages/91/33/e2ff1d4675d9f6fae51e03b0ad99ab9276773424006191c1057609b543db/myst-parser-0.15.2.tar.gz
+URL = https://files.pythonhosted.org/packages/32/8b/88114edd2f1e9153f12433464a60ba8289a9fb381364a6d57a8607cbe8a3/myst-parser-0.16.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
