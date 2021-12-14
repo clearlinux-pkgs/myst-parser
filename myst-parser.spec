@@ -4,7 +4,7 @@
 #
 Name     : myst-parser
 Version  : 0.16.0
-Release  : 7
+Release  : 8
 URL      : https://files.pythonhosted.org/packages/32/8b/88114edd2f1e9153f12433464a60ba8289a9fb381364a6d57a8607cbe8a3/myst-parser-0.16.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/32/8b/88114edd2f1e9153f12433464a60ba8289a9fb381364a6d57a8607cbe8a3/myst-parser-0.16.0.tar.gz
 Summary  : An extended commonmark compliant parser, with bridges to docutils & sphinx.
